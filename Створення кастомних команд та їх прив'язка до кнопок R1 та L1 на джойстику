@@ -1,0 +1,16 @@
+local ContextActionService = game:GetService("ContextActionService")
+
+-- Функція, яка спрацьовує при натисканні
+local function onPageTurn(actionName, inputState, inputObject)
+	if inputState == Enum.UserInputState.Begin then-- при натиску кнопки
+		if actionName == "NextPage" then--якшо команда зветься NextPage
+			print("DA")
+		elseif actionName == "PrevPage" then--якшо команда зветься PrevPage
+			print("NI")
+		end
+	end
+end
+
+-- Прив'язуємо дію до кнопок геймпада L1 та R1
+ContextActionService:BindAction("NextPage", onPageTurn, true, Enum.KeyCode.ButtonR1)-- Створення кастомної команди з назвою NextPage, кнопка буде запусте функцію onPageTurn, true/false - чи показувати цю кнопку на інтерфейсі телефону
+ContextActionService:BindAction("PrevPage", onPageTurn, true, Enum.KeyCode.ButtonL1)-- Створення кастомної команди з назвою PrevPage
