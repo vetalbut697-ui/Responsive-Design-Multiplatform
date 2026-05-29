@@ -1,0 +1,15 @@
+local GuiService = game:GetService("GuiService")-- метод що запускає режим вибору Між елементами інтерфейсу(на компі також неможливо рухатись)
+local screenGui = script.Parent--екран
+--Ті самі елементи(У НИХ У ВЛАСТИВОСТЯХ ПОВИННА БУТИ ГАЛОЧКА НА Selectable)
+local button1 = screenGui:WaitForChild("MyConsoleButton")
+local button3 = screenGui:WaitForChild("MyConsoleButton3")
+
+-- По суті метод автоматично запуститься тільки тоді коли вибере перший елемнт з якого почне елемент
+GuiService.SelectedObject = button1
+
+button3.Text = "ЗАКРИТИ МЕНЮ"
+
+button3.MouseButton1Click:Connect(function()
+	GuiService.SelectedObject = nil --виключення методу(на компі повертається можливість переміщуватись)
+	button3.Text = "Меню закрито!"
+end)
